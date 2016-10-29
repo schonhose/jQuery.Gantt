@@ -821,35 +821,35 @@
                     ganttNavigate = $('<div class="navigate" />')
                         .append($('<div class="nav-slider" />')
                             .append($('<div class="nav-slider-left" />')
-                                .append($('<button type="button" class="nav-link nav-page-back"/>')
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-back"/>')
                                     .prop("disabled", element.pageNum === 0)
-                                    .html('&lt;')
-                                    .click(function () {
+                                    .html('<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>')
+                                    .click(function() {
                                         core.navigatePage(element, -1);
                                     }))
                                 .append($('<div class="page-number"/>')
-                                        .append($('<span/>')
-                                            .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                                .append($('<button type="button" class="nav-link nav-page-next"/>')
+                                    .append($('<span/>')
+                                        .html(element.pageNum + 1 + ' / ' + element.pageCount)))
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-next"/>')
                                     .prop("disabled", element.pageNum + 1 === element.pageCount)
-                                    .html('&gt;')
-                                    .click(function () {
+                                    .html('<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>')
+                                    .click(function() {
                                         core.navigatePage(element, 1);
                                     }))
-                                .append($('<button type="button" class="nav-link nav-now"/>')
-                                    .html('&#9679;')
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-now"/>')
+                                    .html('<span class="glyphicon glyphicon-time" aria-hidden="true"></span>')
                                     .click(function () {
                                         core.navigateTo(element, 'now');
                                     }))
-                                .append($('<button type="button" class="nav-link nav-prev-week"/>')
-                                    .html('&lt;&lt;')
-                                    .click(function () {
-                                        core.navigateTo(element, tools.getCellSize() * 7);
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-prev-week"/>')
+                                    .html('<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>')
+                                    .click(function() {
+                                       core.navigateTo(element, tools.getCellSize() * 8);
                                     }))
-                                .append($('<button type="button" class="nav-link nav-prev-day"/>')
-                                    .html('&lt;')
-                                    .click(function () {
-                                        core.navigateTo(element, tools.getCellSize());
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-prev-day"/>')
+                                    .html('<span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>')
+                                    .click(function() {
+                                        core.navigateTo(element, tools.getCellSize() * 4);
                                     })))
                             .append($('<div class="nav-slider-content" />')
                                     .append($('<div class="nav-slider-bar" />')
@@ -868,26 +868,26 @@
                                             )
                                         )
                             .append($('<div class="nav-slider-right" />')
-                                .append($('<button type="button" class="nav-link nav-next-day"/>')
-                                    .html('&gt;')
-                                    .click(function () {
-                                        core.navigateTo(element, tools.getCellSize() * -1);
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-next-day"/>')
+                                    .html('<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>')
+                                    .click(function() {
+                                        core.navigateTo(element, tools.getCellSize() * -4);
                                     }))
-                            .append($('<button type="button" class="nav-link nav-next-week"/>')
-                                    .html('&gt;&gt;')
-                                    .click(function () {
-                                        core.navigateTo(element, tools.getCellSize() * -7);
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-next-week"/>')
+                                    .html('<span class="glyphicon glyphicon-forward" aria-hidden="true"></span>')
+                                    .click(function() {
+                                        core.navigateTo(element, tools.getCellSize() * -8);
                                     }))
-                                .append($('<button type="button" class="nav-link nav-zoomIn"/>')
+                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-zoomIn"/>')
                                     .prop("disabled", settings.scale == settings.minScale)
-                                    .html('&#43;')
-                                    .click(function () {
+                                    .html('<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>')
+                                    .click(function() {
                                         core.zoomInOut(element, -1);
                                     }))
-                                .append($('<button type="button" class="nav-link nav-zoomOut"/>')
+                                .append($('<button type="button" class="btn btn-info btn-sm  nav-link nav-zoomOut"/>')
                                     .prop("disabled", settings.scale == settings.maxScale)
-                                    .html('&#45;')
-                                    .click(function () {
+                                    .html('<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>')
+                                    .click(function() {
                                         core.zoomInOut(element, 1);
                                     }))
                                     )
@@ -898,66 +898,66 @@
                 // Button navigation is provided by setting `settings.navigation='buttons'`
                 } else {
                     ganttNavigate = $('<div class="navigate" />')
-                        .append($('<button type="button" class="nav-link nav-page-back"/>')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-back"/>')
                             .prop("disabled", element.pageNum === 0)
-                            .html('&lt;')
-                            .click(function () {
+                            .html('<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>')
+                            .click(function() {
                                 core.navigatePage(element, -1);
                             }))
                         .append($('<div class="page-number"/>')
                                 .append($('<span/>')
                                     .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                        .append($('<button type="button" class="nav-link nav-page-next"/>')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-next"/>')
                             .prop("disabled", element.pageNum + 1 === element.pageCount)
-                            .html('&gt;')
-                            .click(function () {
+                            .html('<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>')
+                            .click(function() {
                                 core.navigatePage(element, 1);
                             }))
-                        .append($('<button type="button" class="nav-link nav-begin"/>')
-                            .html('&#124;&lt;')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-begin"/>')
+                            .html('<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>')
                             .click(function () {
                                 core.navigateTo(element, 'begin');
                             }))
-                        .append($('<button type="button" class="nav-link nav-prev-week"/>')
-                            .html('&lt;&lt;')
-                            .click(function () {
-                                core.navigateTo(element, tools.getCellSize() * 7);
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-prev-week"/>')
+                            .html('<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>')
+                            .click(function() {
+                               core.navigateTo(element, tools.getCellSize() * 8);
                             }))
-                        .append($('<button type="button" class="nav-link nav-prev-day"/>')
-                            .html('&lt;')
-                            .click(function () {
-                                core.navigateTo(element, tools.getCellSize());
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-prev-day"/>')
+                            .html('<span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>')
+                            .click(function() {
+                                core.navigateTo(element, tools.getCellSize() * 4);
                             }))
-                        .append($('<button type="button" class="nav-link nav-now"/>')
-                            .html('&#9679;')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-now"/>')
+                            .html('<span class="glyphicon glyphicon-time" aria-hidden="true"></span>')
                             .click(function () {
                                 core.navigateTo(element, 'now');
                             }))
-                        .append($('<button type="button" class="nav-link nav-next-day"/>')
-                            .html('&gt;')
-                            .click(function () {
-                                core.navigateTo(element, tools.getCellSize() * -1);
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-next-day"/>')
+                            .html('<span class="glyphicon glyphicon-triangle-right  " aria-hidden="true"></span>')
+                            .click(function() {
+                                core.navigateTo(element, tools.getCellSize() * -4);
                             }))
-                        .append($('<button type="button" class="nav-link nav-next-week"/>')
-                            .html('&gt;&gt;')
-                            .click(function () {
-                                core.navigateTo(element, tools.getCellSize() * -7);
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-next-week"/>')
+                            .html('<span class="glyphicon glyphicon-forward" aria-hidden="true"></span>')
+                            .click(function() {
+                                core.navigateTo(element, tools.getCellSize() * -8);
                             }))
-                        .append($('<button type="button" class="nav-link nav-end"/>')
-                            .html('&gt;&#124;')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-end"/>')
+                            .html('<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>')
                             .click(function () {
                                 core.navigateTo(element, 'end');
                             }))
-                        .append($('<button type="button" class="nav-link nav-zoomIn"/>')
+                        .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-zoomIn"/>')
                             .prop("disabled", settings.scale == settings.minScale)
-                            .html('&#43;')
-                            .click(function () {
+                            .html('<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>')
+                            .click(function() {
                                 core.zoomInOut(element, -1);
                             }))
-                        .append($('<button type="button" class="nav-link nav-zoomOut"/>')
+                        .append($('<button type="button" class="btn btn-info btn-sm  nav-link nav-zoomOut"/>')
                             .prop("disabled", settings.scale == settings.maxScale)
-                            .html('&#45;')
-                            .click(function () {
+                            .html('<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>')
+                            .click(function() {
                                 core.zoomInOut(element, 1);
                             }));
                 }
