@@ -239,8 +239,8 @@
 
                 $(element).empty().append(element.gantt);
 
-                element.scrollNavigation.panelMaxPos = ($dataPanel.outerWidth() - $rightPanel.outerWidth()) * -1;
-                element.scrollNavigation.canScroll = ($dataPanel.outerWidth() > $rightPanel.outerWidth());
+                element.scrollNavigation.panelMaxPos = ($dataPanel.width() - $rightPanel.width()) * -1;
+                element.scrollNavigation.canScroll = ($dataPanel.width() > $rightPanel.width());
 
                 core.markNow(element);
                 core.fillData(element, $dataPanel, $leftPanel);
@@ -266,7 +266,7 @@
                 } else {
                     if (element.hPosition !== 0) {
                         if (element.scaleOldWidth) {
-                            mLeft = ($dataPanel.outerWidth() - $rightPanel.outerWidth());
+                            mLeft = ($dataPanel.width() - $rightPanel.width());
                             hPos = mLeft * element.hPosition / element.scaleOldWidth;
                             element.hPosition = hPos > 0 ? 0 : hPos;
                             element.scaleOldWidth = null;
@@ -280,7 +280,7 @@
 
                 core.switchScrollButton(element);
 
-                $dataPanel.css({ height: $leftPanel.outerHeight() });
+                $dataPanel.css({ height: $leftPanel.height() });
                 core.waitToggle(element);
                 settings.onRender();
             },
@@ -358,7 +358,7 @@
 
                     var dt = col.data("repdate");
                     // Find row where click occurred
-                    var row = core.elementFromPoint(leftpanel.offset().left + leftpanel.outerWidth() - 10, e.pageY);
+                    var row = core.elementFromPoint(leftpanel.offset().left + leftpanel.width() - 10, e.pageY);
                     // Was the label clicked directly?
                     if (row.className.indexOf("fn-label") === 0) {
                         row = $(row.parentNode);
@@ -646,13 +646,11 @@
                         '</div></div>');
 
                     // Last month
-                    if (scaleUnitsThisMonth > 0) {
-                        monthArr.push(
-                            '<div class="row header month" style="width: ' +
-                            tools.getCellSize() * scaleUnitsThisMonth + 'px"><div class="fn-label">' +
-                            settings.months[month] +
-                            '</div></div>');
-                    }
+                    monthArr.push(
+                        '<div class="row header month" style="width: ' +
+                        tools.getCellSize() * scaleUnitsThisMonth + 'px"><div class="fn-label">' +
+                        settings.months[month] +
+                        '</div></div>');
 
                     dataPanel = core.dataPanel(element, range.length * tools.getCellSize());
 
@@ -1183,7 +1181,7 @@
                     var $rightPanel = $(element).find(".fn-gantt .rightPanel");
                     var $dataPanel = $rightPanel.find(".dataPanel");
                     element.hPosition = $dataPanel.css("margin-left").replace("px", "");
-                    element.scaleOldWidth = ($dataPanel.outerWidth() - $rightPanel.outerWidth());
+                    element.scaleOldWidth = ($dataPanel.width() - $rightPanel.width());
 
                     if (settings.useCookie) {
                         $.cookie(settings.cookieKey + "CurrentScale", settings.scale);
@@ -1237,8 +1235,8 @@
                 var $dataPanel = $rightPanel.find(".dataPanel");
 
                 var bPos = $sliderBar.offset();
-                var bWidth = $sliderBar.outerWidth();
-                var wButton = $sliderBarBtn.outerWidth();
+                var bWidth = $sliderBar.width();
+                var wButton = $sliderBarBtn.width();
 
                 var pos;
 
@@ -1286,15 +1284,15 @@
                 var $sliderBar = $(element).find(".nav-slider-bar");
                 var $sliderBtn = $sliderBar.find(".nav-slider-button");
 
-                var bWidth = $sliderBar.outerWidth();
-                var wButton = $sliderBtn.outerWidth();
+                var bWidth = $sliderBar.width();
+                var wButton = $sliderBtn.width();
 
-                var mLeft = $dataPanel.outerWidth() - $rightPanel.outerWidth();
+                var mLeft = $dataPanel.width() - $rightPanel.width();
                 var hPos = $dataPanel.css("margin-left") || 0;
                 if (hPos) {
                     hPos = hPos.replace("px", "");
                 }
-                var pos = hPos * bWidth / mLeft - $sliderBtn.outerWidth() * 0.25;
+                var pos = hPos * bWidth / mLeft - $sliderBtn.width() * 0.25;
                 pos = pos > 0 ? 0 : (pos * -1 >= bWidth - (wButton * 0.75)) ? (bWidth - (wButton * 1.25)) * -1 : pos;
                 $sliderBtn.css("left", pos * -1);
             },
@@ -1591,7 +1589,7 @@
                 if (typeof tools._getCellSize === "undefined") {
                     var measure = $('<div style="display: none; position: absolute;" class="fn-gantt"><div class="row"></div></div>');
                     $("body").append(measure);
-                    tools._getCellSize = measure.find(".row").outerHeight();
+                    tools._getCellSize = measure.find(".row").height();
                     measure.empty().remove();
                 }
                 return tools._getCellSize;
