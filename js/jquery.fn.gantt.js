@@ -271,7 +271,7 @@
                             element.hPosition = hPos > 0 ? 0 : hPos;
                             element.scaleOldWidth = null;
                         }
-                        $dataPanel.css({ "margin-left": element.hPosition });
+                        $dataPanel.css("margin-left", element.hPosition + "px");
                         element.scrollNavigation.panelMargin = element.hPosition;
                         core.synchronizeScroller(element);
                     }
@@ -877,6 +877,8 @@
                         var targetRow = element.highlightedRow && element.highlightedRow >= firstColumn && element.highlightedRow <= lastColumn ?
                             element.highlightedRow : firstColumn;
                         element.pageNum = Math.floor(targetRow / settings.itemsPerPage);
+                        element.hPosition = $(".fn-gantt .dataPanel").css("margin-left").replace("px", "");
+
                         core.refresh(element);
                     }));
             },
