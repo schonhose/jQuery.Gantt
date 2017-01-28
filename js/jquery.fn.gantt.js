@@ -758,21 +758,6 @@
                         .append($('<div class="nav-slider" />')
                             .append($('<div class="nav-slider-left" />')
                                 .append(core.pageNavigation(element))
-                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-back"/>')
-                                    .prop("disabled", element.pageNum === 0)
-                                    .html('<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>')
-                                    .click(function() {
-                                        core.navigatePage(element, -1);
-                                    }))
-                                .append($('<div class="page-number"/>')
-                                    .append($('<span/>')
-                                        .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                                .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-page-next"/>')
-                                    .prop("disabled", element.pageNum + 1 === element.pageCount)
-                                    .html('<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>')
-                                    .click(function() {
-                                        core.navigatePage(element, 1);
-                                    }))
                                 .append($('<button type="button" class="btn btn-info btn-sm nav-link nav-now"/>')
                                     .html('<span class="glyphicon glyphicon-time" aria-hidden="true"></span>')
                                     .click(function () {
